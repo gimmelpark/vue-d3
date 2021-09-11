@@ -1,11 +1,13 @@
 <template>
 <div class="sidebar">
-  <div v-for="(link, ind) in navLinks"
-       :key="ind"
-       class="sidebar-link-wrpp">
-    <RouterLink :to="link.to"
-                class="sidebar-link blue-grey--text text--darken-3 text-h6 text-decoration-none"
-    >{{link.title}}</RouterLink>
+  <div class="ml-8 mr-10">
+    <div v-for="(link, ind) in navLinks"
+         :key="ind"
+         class="sidebar-link-wrpp mb-3">
+      <RouterLink :to="{ name: link.to }"
+                  class="sidebar-link grey--text text--darken-1 text-h6 text-decoration-none font-weight-bold"
+      >{{link.title}}</RouterLink>
+    </div>
   </div>
 </div>
 </template>
@@ -17,15 +19,15 @@ export default {
     navLinks: [
       {
         title: 'Простые числа',
-        to: '/',
+        to: 'PrimeNumbers',
       },
       {
-        title: 'Что-то еще',
-        to: '/',
+        title: 'Спираль',
+        to: 'Spiral',
       },
       {
-        title: 'И еще что-то',
-        to: '/',
+        title: 'Фигуры Лиссажу',
+        to: 'Lissajous',
       },
     ],
   }),
@@ -34,12 +36,26 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 250px;
+  width: 300px;
+}
+.sidebar > div {
+  padding-top: 30px;
 }
 .sidebar-link-wrpp {
-
 }
 .sidebar-link-wrpp > .sidebar-link {
-
+  display: block;
+  height: 40px;
+  width: 100%;
+  padding-left: 20px;
+  line-height: 40px;
+  border-radius: 10px;
+}
+.sidebar-link-wrpp > .sidebar-link.router-link-active,
+.sidebar-link-wrpp > .sidebar-link.router-link-active:hover {
+  background-color: #fcefe1;
+}
+.sidebar-link-wrpp > .sidebar-link:hover {
+  background-color: #fffaf5;
 }
 </style>
