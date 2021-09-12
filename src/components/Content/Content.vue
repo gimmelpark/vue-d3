@@ -1,6 +1,6 @@
 <template>
-  <div class="flex-grow-1">
-    <div class="content background1 px-5 py-4" v-if="showContent">
+  <div class="">
+    <div class="content background1" v-if="showContent">
       <RouterView />
     </div>
   </div>
@@ -23,6 +23,7 @@ export default {
   min-height: calc(100vh - 150px);
   margin: 30px 150px 0 10px;
   border-radius:  30px;
+    overflow: hidden;
 }
 .svg-container{
   background-color: #ffffff;
