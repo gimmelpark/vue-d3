@@ -79,7 +79,6 @@ const calculateNumbers = function (numbers, scale, maxSize = 500) {
     if (numbers.length === 0) numbers = [2]
     // наибольшее число, необходимое для заполнения поля
     const max = Math.round(scale * Math.ceil(maxSize / 2 * Math.sqrt(2)));
-
     if (max > numbers[numbers.length - 1]) {
         const newNumbers = allPrimeNumbers(numbers[numbers.length - 1] + 1, max)
         return [...numbers, ...newNumbers];
@@ -87,6 +86,7 @@ const calculateNumbers = function (numbers, scale, maxSize = 500) {
     if (max < numbers[numbers.length - 1]) {
         return numbers.slice(0, numbers.findIndex(el => el >= max))
     }
+
     return numbers
 }
 

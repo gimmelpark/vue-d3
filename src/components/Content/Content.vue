@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <div class="content background1" v-if="showContent">
       <RouterView />
     </div>
@@ -20,10 +20,10 @@ export default {
 
 <style>
 .content {
-  min-height: calc(100vh - 150px);
+  /*min-height: calc(100vh - 150px);*/
   margin: 30px 150px 0 10px;
   border-radius:  30px;
-    overflow: hidden;
+  overflow: hidden;
 }
 .svg-container{
   background-color: #ffffff;
