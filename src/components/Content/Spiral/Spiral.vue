@@ -5,12 +5,11 @@
             <v-btn small
                    fab
                    color="blue-grey darken-1"
-                   class="white--text"
+                   class="white--text ml-2"
                    @click="onPlayBtnClick">
                 <v-icon>mdi-{{isAnimationActive? 'pause': 'play'}}</v-icon>
             </v-btn>
         </div>
-        {{angle * 180 / Math.PI}}
     </div>
 </template>
 
@@ -60,6 +59,7 @@ export default {
         angle: 0,
         timer: undefined,
         isAnimationActive: false,
+        timeValue: 20000,
     }),
     created() {
         this.numbers = createNumbers(this.maxN)
@@ -83,15 +83,11 @@ export default {
             }
         },
         startAnimation() {
-            let startTime = new Date().getTime()
-            let timer = setInterval(() => {
+            const startTime = new Date().getTime() - this.timeValue
+            const timer = setInterval(() => {
                 let time = new Date().getTime() - startTime
-                // let angle = (Math.PI * (-20 + ((time / 1000) % 40))) / 40
-                this.angle = this.angle + ((time / 10000) % 20) * Math.PI
-                if (this.angle >= Math.PI / 2) {
-                    this.angle = -Math.PI / 2
-                    // startTime = new Date().getTime()
-                }
+                this.timeValue = (new Date().getTime() - startTime) % 40000
+                this.angle = (Math.PI * (-20 + ((this.timeValue / 1000) % 40))) / 40
                 updateSpiral(calculateSpiral(this.numbers, this.angle))
             }, 10)
             return timer
